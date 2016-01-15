@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        style="@style/Ping_Settings_Desc"
+        android:text="Domain Name"
+        android:id="@+id/ping_sett_domain_desc" />
+    <EditText
+        android:id="@+id/ping_sett_domain"
+        style="@style/Ping_Settings_Input"
+        android:hint="www.google.com" />
+
+    <TextView
+        style="@style/Ping_Settings_Desc"
+        android:text="Repeat every...(ms)"
+        android:id="@+id/ping_sett_repeat_desc" />
+    <EditText
+        android:id="@+id/ping_sett_repeat"
+        style="@style/Ping_Settings_Input"
+        android:hint="3000" />
+
+    <TextView
+        style="@style/Ping_Settings_Desc"
+        android:text="Timeout(ms)"
+        android:id="@+id/ping_sett_timeout_desc" />
+    <EditText
+        android:id="@+id/ping_sett_timeout"
+        style="@style/Ping_Settings_Input"
+        android:hint="1000" />
+
+    <TextView
+        style="@style/Ping_Settings_Desc"
+        android:text="Slowness Threshold"
+        android:id="@+id/ping_sett_slow_desc" />
+    <EditText
+        android:id="@+id/ping_sett_slow"
+        style="@style/Ping_Settings_Input"
+        android:hint="500" />
+
+
+</LinearLayout>

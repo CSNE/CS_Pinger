@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CS Pinger</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="controls_host">Host Name</string>
+    <string name="controls_repeat">Repeat Every...</string>
+    <string name="controls_timeout">Timeout</string>
+    <string name="controls_slow">Slow Threshold</string>
+    <string name="help">\n--CS PINGER--\nBy 14063 양찬솔\n\n\n노사에서 인터넷을 하는데 갑자기 구글에 접속이 안 될 때가 있으신가요?\n그런데 네이버는 접속이 잘 된다고요?\n\n그건 바로 HTTPS 연결이 끊어졌기 때문입니다! 우리학교 인터넷망의 종특 덕분에, HTTP연결은 잘 되는데도, HTTP연결만 몇 분씩 끊길 때가 있습니다. 이때 언제 HTTPS가 끊긴 건지, 언제 HTTPS가 복구되는지, 공유기와의 연결은 괜찮은지 등의 정보를 알면 노사 사용시 덜 빡칠 수 있습니다.\n\n\n이 앱은 HTTPS, HTTP, Ping을 동시에 확인하고, 이 중 끊어진 연결이 있으면 바로 알려 줄 수 있습니다!\n또 그래프를 그려 주어 인터넷의 연결 상태를 한눈에 볼 수 있습니다.\n그리고 앱을 종료해도 배경에서 알림을 띄워 주어 스마트폰을 자유롭게 쓸 수 있습니다.\n또한 위의 와이파이 정보 버튼을 누르면 공유기의 IP주소가 표시됩니다. 이 IP주소로 ICMP Ping을 보내면 공유기와의 연결 상태를 확인 할 수 있습니다.\n\n\n!!주의!!\n이 앱에서 HTTPS나 HTTP를 사용하여 연결 확인을 할 때, 확인을 한 사이트가 모두 로딩됩니다.\n모바일 데이터로 이 앱을 사용하실 때에는 조심하십시오. 데이터 폭탄을 맛보실 수 있습니다.\n\n\n--기술적 원리--\n인터넷 연결을 확인 할 수 있는 방법은 여러 가지가 있습니다.\n1. ICMP Echo\nICMP(Internet Control Message Protocol)은 인터넷 상의 여러 기기들 간에 요청을 할 수 있게 하는 프로토콜입니다. ICMP에서 지원하는 명령 중 하나는 Echo입니다. Echo Request를 받은 공유기나 서버는 패킷을 바로 돌려 주어랴 합니다. Echo를 처음에 보냈던 기기는 Echo가 돌아온 시간을 바탕으로 왕복 시간을 계산 할 수 있습니다. 이렇게 하는 프로그램을 Ping이라고 하며, 대부분의 운영 체제에 내장되어 있는 기능입니다.\n이 Ping은 빠르고 정확하게 왕복 시간과 서버와의 통신 가능 여부를 알 수 있지만, 일반 웹서핑을 할 때 쓰는 HTTP보다 낮은 층의 통신이기 때문에, ICMP Echo는 되지만 HTTP는 안 되는 경우가 발생 할 수 있습니다.\n2. HTTP Request\nHTTP(HyperText Transfer Protocol)은 웹사이트를 로딩할때 쓰이는 통신 프로토콜입니다. 어떠한 웹사이트에 HTTP GET 명령을 보내 웹페이지를 요청하면 서버는 웹페이지를 반환해야 합니다. 만약 여기에서 에러가 생긴다면 사용자가 웹사이트를 볼 때 문제가 생깁니다. \n3. HTTPS Request\nHTTPS는 HTTP를 TLS(Transport Layer Security)나 SSL(Secure Socets Layer)를 통하여 통신하여 외부인이 볼 수 없도록 하는 프로토콜입니다. 저희 학교에서는 왠지 모르겠지만 이 HTTPS가 되지 않을 때가 있습니다.\n\n이 앱에서는 위 3가지 방법을 동시에 체크하여 바로 확인 할 수 있도록 했습니다.\n</string>
+</resources>

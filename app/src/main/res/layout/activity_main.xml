@@ -1,0 +1,381 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Dummy item to prevent EditText from receiving focus -->
+    <LinearLayout
+        android:focusable="true" android:focusableInTouchMode="true"
+        android:layout_width="0px" android:layout_height="0px"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <RelativeLayout
+            android:id="@+id/alert_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/graph_view">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/alert_toggle"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alert when more than"
+                android:id="@+id/alert_text_1"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/alert_toggle" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/alert_input"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/alert_text_1"
+                android:layout_toLeftOf="@+id/alert_text_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="consecutive fails"
+                android:id="@+id/alert_text_2"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+        <!--
+                <ListView
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/buttons_layout"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="false"
+                    android:layout_alignParentTop="false"
+                    android:id="@+id/controls_container">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icmp_controls"
+                        android:layout_margin="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ICMP Ping"
+                            style="@style/Controls_Title"
+                            android:id="@+id/icmp_title"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true" />
+
+                        <Button
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/icmp_end"
+                            android:background="@drawable/ic_cancel_black_48dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true" />
+
+                        <Button
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/ic_play_circle_fill_black_48dp"
+                            android:id="@+id/icmp_start"
+                            android:layout_toLeftOf="@+id/icmp_end" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New Text"
+                            style="@style/Controls_Information"
+                            android:id="@+id/icmp_information"
+                            android:layout_alignParentBottom="false"
+                            android:layout_alignParentLeft="false"
+                            android:layout_below="@+id/icmp_title" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:id="@+id/http_controls"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HTTP Ping"
+                            style="@style/Controls_Title"
+                            android:id="@+id/http_title"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true" />
+
+                        <Button
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/http_end"
+                            android:background="@drawable/ic_cancel_black_48dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true" />
+
+                        <Button
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/ic_play_circle_fill_black_48dp"
+                            android:id="@+id/http_start"
+                            android:layout_toLeftOf="@+id/http_end" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New Text"
+                            style="@style/Controls_Information"
+                            android:id="@+id/http_information"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true" />
+                    </RelativeLayout>
+
+                </ListView>
+        -->
+
+        <ScrollView
+            android:id="@+id/controls_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alert_container">
+
+            <LinearLayout
+                android:id="@+id/controls_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/icmp_controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/icmp_titlebar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/icmp_icon"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true" />
+
+                        <TextView
+                            android:id="@+id/icmp_title"
+                            style="@style/Controls_Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentTop="false"
+                            android:text="ICMP Ping"
+                            android:layout_toRightOf="@+id/icmp_icon"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp" />
+
+                        <Button
+                            android:id="@+id/icmp_end"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/ic_cancel_black_36dp" />
+
+                        <Button
+                            android:id="@+id/icmp_start"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_toLeftOf="@+id/icmp_end"
+                            android:background="@drawable/ic_play_circle_fill_black_36dp" />
+
+                        <Button
+                            android:id="@+id/icmp_settings"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_toLeftOf="@+id/icmp_start"
+                            android:background="@drawable/ic_settings_black_36dp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/icmp_result"
+                        style="@style/Controls_Result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/icmp_information"
+                        style="@style/Controls_Information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/http_controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/http_titlebar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/http_icon"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true" />
+
+                        <TextView
+                            android:id="@+id/http_title"
+                            style="@style/Controls_Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentTop="false"
+                            android:text="HTTP Request"
+                            android:layout_toRightOf="@+id/http_icon"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp" />
+
+                        <Button
+                            android:id="@+id/http_end"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/ic_cancel_black_36dp" />
+
+                        <Button
+                            android:id="@+id/http_start"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_toLeftOf="@+id/http_end"
+                            android:background="@drawable/ic_play_circle_fill_black_36dp" />
+
+                        <Button
+                            android:id="@+id/http_settings"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_toLeftOf="@+id/http_start"
+                            android:background="@drawable/ic_settings_black_36dp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/http_result"
+                        style="@style/Controls_Result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/http_information"
+                        style="@style/Controls_Information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/https_controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/https_titlebar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/https_icon"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true" />
+
+                        <TextView
+                            android:id="@+id/https_title"
+                            style="@style/Controls_Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentTop="false"
+                            android:text="HTTPS Request"
+                            android:layout_toRightOf="@+id/https_icon"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp" />
+
+                        <Button
+                            android:id="@+id/https_end"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/ic_cancel_black_36dp" />
+
+                        <Button
+                            android:id="@+id/https_start"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_toLeftOf="@+id/https_end"
+                            android:background="@drawable/ic_play_circle_fill_black_36dp" />
+
+                        <Button
+                            android:id="@+id/https_settings"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_toLeftOf="@+id/https_start"
+                            android:background="@drawable/ic_settings_black_36dp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/https_result"
+                        style="@style/Controls_Result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/https_information"
+                        style="@style/Controls_Information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>
