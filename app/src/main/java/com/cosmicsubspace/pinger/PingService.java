@@ -1,10 +1,9 @@
-package com.chancorp.midproj;
+package com.cosmicsubspace.pinger;
 
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 
@@ -212,12 +211,14 @@ public class PingService extends Service implements PingReturnListener {
     }
 
     public int checkPingInfos(){
-        for(PingInfo pi:pingInfos){
-            if (pi!=null){
-                if (!pi.isSuccess()) return BAD;
-                if (pi.isSlow())  return SLOW;
-            }
-        }
+        if (icmpActive && pingInfos[0]!=null && !pingInfos[0].isSuccess()) return BAD;
+        if (httpActive && pingInfos[1]!=null && !pingInfos[1].isSuccess()) return BAD;
+        if (httpsActive && pingInfos[2]!=null && !pingInfos[2].isSuccess()) return BAD;
+
+        if (icmpActive && pingInfos[0]!=null && pingInfos[0].isSlow()) return SLOW;
+        if (httpActive && pingInfos[1]!=null && pingInfos[1].isSlow()) return SLOW;
+        if (httpsActive && pingInfos[2]!=null && pingInfos[2].isSlow()) return SLOW;
+
         return GOOD;
     }
 
@@ -334,14 +335,15 @@ public class PingService extends Service implements PingReturnListener {
 
         PendingIntent pendInt=PendingIntent.getActivity(this, 18274,new Intent(this,MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+
         nb.setContentIntent(pendInt);
         nb.setContentTitle("CS Pinger");
         nb.setOngoing(true);
 
         String notificationString="";
-        if (pingInfos[0]!=null) notificationString=notificationString+pingInfos[0].getNotificationString()+" ";
-        if (pingInfos[1]!=null) notificationString=notificationString+pingInfos[1].getNotificationString()+" ";
-        if (pingInfos[2]!=null) notificationString=notificationString+pingInfos[2].getNotificationString();
+        if (pingInfos[0]!=null && icmpActive) notificationString=notificationString+pingInfos[0].getNotificationString()+" ";
+        if (pingInfos[1]!=null && httpActive) notificationString=notificationString+pingInfos[1].getNotificationString()+" ";
+        if (pingInfos[2]!=null && httpsActive) notificationString=notificationString+pingInfos[2].getNotificationString();
         nb.setContentText(notificationString);
 
         NotificationManager mNotificationManager =

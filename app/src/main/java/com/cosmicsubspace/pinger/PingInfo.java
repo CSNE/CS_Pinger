@@ -1,4 +1,4 @@
-package com.chancorp.midproj;
+package com.cosmicsubspace.pinger;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -20,8 +20,6 @@ public class PingInfo implements Parcelable {
     int pingType;
     long returnTime;
     int slowThreshold;
-
-
 
 
     public PingInfo(){

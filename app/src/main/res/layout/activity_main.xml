@@ -262,7 +262,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="false"
-                            android:text="HTTP Request"
+                            android:text="HTTP GET"
                             android:layout_toRightOf="@+id/http_icon"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="8dp" />
@@ -330,7 +330,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="false"
-                            android:text="HTTPS Request"
+                            android:text="HTTPS GET"
                             android:layout_toRightOf="@+id/https_icon"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="8dp" />

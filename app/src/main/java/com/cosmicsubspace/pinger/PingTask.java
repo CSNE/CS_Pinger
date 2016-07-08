@@ -1,4 +1,4 @@
-package com.chancorp.midproj;
+package com.cosmicsubspace.pinger;
 
 import android.os.AsyncTask;
 import android.util.Log;

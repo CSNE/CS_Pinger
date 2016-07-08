@@ -1,4 +1,4 @@
-package com.chancorp.midproj;
+package com.cosmicsubspace.pinger;
 
 import android.app.AlertDialog;
 import android.content.Context;

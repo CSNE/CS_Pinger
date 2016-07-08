@@ -1,4 +1,4 @@
-package com.chancorp.midproj;
+package com.cosmicsubspace.pinger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +26,6 @@ import android.widget.Toast;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.io.FileInputStream;
@@ -195,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
+/*
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.db_1) {
@@ -208,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tsp.setTitle("Help");
             tsp.setText(getResources().getString(R.string.help));
             tsp.init();
-        }else if (id == R.id.gateway) {
+        }else*/ if (id == R.id.gateway) {
             TextShowPopup tsp = new TextShowPopup(this);
             tsp.setTitle("Gateway Information");
             if (isWifiConnected()) {
@@ -231,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             } else return false;
         }catch(Exception e){
-            Toast.makeText(this, "에러 발생. 개발자 부르세요.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "CS Pinger internal error.", Toast.LENGTH_LONG).show();
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
             Log.d(LOG_TAG, "Error in isWifiConnected:\n"+errors.toString());
@@ -245,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int gt = wifii.getDhcpInfo().gateway;
             return intToIp(gt);
         } catch (Exception e) {
-            Toast.makeText(this, "에러 발생. 개발자 부르세요.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "CS Pinger internal error.", Toast.LENGTH_LONG).show();
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
             Log.d(LOG_TAG, "Error in isWifiConnected:\n"+errors.toString());
